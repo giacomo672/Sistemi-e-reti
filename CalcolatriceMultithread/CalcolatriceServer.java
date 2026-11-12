@@ -1,16 +1,14 @@
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
-import java.text.BreakIterator;
 
 public class CalcolatriceServer {
 
   private static final int port = 5000;
-  private static int conteggio = 0;
 
   public static void main(String[] args) throws IOException {
     try (ServerSocket server = new ServerSocket(port)) {
-
+    System.out.println("In ascolto su porta: " + port);
       while (true) {
         Socket client = server.accept();
         System.out.println("Accettata richiesta da: " + getIp(client));
