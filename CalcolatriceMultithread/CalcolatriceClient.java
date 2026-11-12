@@ -10,29 +10,25 @@ public class CalcolatriceClient {
 
   private static final int port = 5000;
   public static void main(String[] args) {
-    try (   
+    try (
         Socket socket = new Socket("localhost", port);
-        
+
         PrintWriter out = new PrintWriter(
             socket.getOutputStream(), true, StandardCharsets.UTF_8
         );
-        
-        
+
+
         BufferedReader in = new BufferedReader(
             new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8)
         );
-    
-        Scanner user_input = new Scanner(System.in)
-      ) {
 
-        System.out.println(in.readLine()); 
+        Scanner user_input = new Scanner(System.in)
+    ) {
+
         System.out.println("Scrivi un operazione o quit per uscire");
 
         while (true) {
-          System.out.print("Scrivi operazione da svolgere ");
-          if (!user_input.hasNextLine()) {
-            break;
-          }
+          System.out.print(">> ");
           String operazione = user_input.nextLine().trim();
 
           if (operazione.isEmpty()) {
